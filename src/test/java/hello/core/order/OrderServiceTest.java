@@ -4,16 +4,23 @@ import hello.core.AppConfig;
 import hello.core.member.Grade;
 import hello.core.member.Member;
 import hello.core.member.MemberService;
-import hello.core.member.MemberServiceImpl;
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Or;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 public class OrderServiceTest {
 
-    AppConfig appConfig = new AppConfig();
-    MemberService memberService = appConfig.memberService();
-    OrderService orderService = appConfig.orderService();
+    private static MemberService memberService;
+    private static OrderService orderService;
+
+    @BeforeAll
+    static void BeforeAll(){
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfig.class);
+        memberService = applicationContext.getBean("memberService", MemberService.class);
+        orderService = applicationContext.getBean("orderService", OrderService.class);
+    }
 
     @Test
     void createOrder(){

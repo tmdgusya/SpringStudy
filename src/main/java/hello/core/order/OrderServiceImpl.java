@@ -3,10 +3,10 @@ package hello.core.order;
 import hello.core.discount.DiscountPolicy;
 import hello.core.member.Member;
 import hello.core.member.MemberRepository;
-import hello.core.member.MemoryMemberRepository;
 
 public class OrderServiceImpl implements OrderService{
 
+    // 구현부는 인터페이스에만 의존해야 함!
     private final MemberRepository memberRepository;
     private final DiscountPolicy discountPolicy;
 
