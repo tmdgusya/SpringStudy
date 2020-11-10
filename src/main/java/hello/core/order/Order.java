@@ -1,5 +1,7 @@
 package hello.core.order;
 
+import org.springframework.stereotype.Component;
+
 public class Order {
 
     private Long memberId;
